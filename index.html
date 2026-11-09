@@ -1,0 +1,829 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Junu's Abode</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Junu's Abode, a homely stay in Gopalthan, West Gotanagar, Guwahati, Assam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap">
+<style>
+/* Layout: sticky header, airy single page of bands (hero, stay, rooms, gallery, reviews, find us, contact), policy pages swap in on the same shell. */
+:root {
+  --bg: #F6F9F6;
+  --surface: #FFFFFF;
+  --tint: #EEEAF8;
+  --ink: #1E2A25;
+  --muted: #55645D;
+  --line: #DCE5DF;
+  --tea: #3F6B58;
+  --tea-ink: #FFFFFF;
+  --tea-soft: #E3EEE8;
+  --marigold: #E6A92E;
+  --cushion: #C6432F;
+  --shadow: 0 10px 30px rgba(30, 42, 37, 0.08);
+  --font-display: "Young Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --radius: 14px;
+  --wrap: 1120px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121A17; --surface: #1B2622; --tint: #221F33; --ink: #E8EFEA; --muted: #A3B2AA;
+    --line: #2E3C36; --tea: #7FB59C; --tea-ink: #0F1A15; --tea-soft: #20312A;
+    --marigold: #F0BA4B; --cushion: #E2705D; --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121A17; --surface: #1B2622; --tint: #221F33; --ink: #E8EFEA; --muted: #A3B2AA;
+  --line: #2E3C36; --tea: #7FB59C; --tea-ink: #0F1A15; --tea-soft: #20312A;
+  --marigold: #F0BA4B; --cushion: #E2705D; --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bg); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--tea); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); }
+h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); }
+h3 { font-size: 1.25rem; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--marigold); outline-offset: 2px; border-radius: 6px; }
+.wrap { max-width: var(--wrap); margin-inline: auto; }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tea); }
+.lede { color: var(--muted); font-size: 1.08rem; max-width: 60ch; }
+section { padding-block: clamp(44px, 7vw, 84px); scroll-margin-top: 70px; }
+.sec-head { display: grid; gap: 10px; margin-bottom: 32px; }
+
+/* Header */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+.nav { max-width: var(--wrap); margin-inline: auto; min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: var(--font-display); font-size: 1.3rem; }
+.brand svg { width: 30px; height: 30px; flex: none; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { display: block; padding: 8px 12px; border-radius: 999px; text-decoration: none; color: var(--ink); font-weight: 500; font-size: 0.95rem; }
+.nav-links a:hover { background: var(--tea-soft); }
+.nav-tools { display: flex; align-items: center; gap: 8px; }
+.icon-btn { width: 42px; height: 42px; display: inline-grid; place-items: center; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.icon-btn svg { width: 20px; height: 20px; }
+.menu-btn { display: none; }
+@media (max-width: 880px) {
+  .menu-btn { display: inline-grid; }
+  .nav-links { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 8px max(16px, env(safe-area-inset-left, 0px)) 16px; background: var(--bg); border-bottom: 1px solid var(--line); display: none; }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 8px; border-radius: 8px; }
+  .nav .btn-wa { display: none; }
+}
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 999px; border: 1.5px solid var(--tea); background: var(--tea); color: var(--tea-ink); font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn.ghost { background: transparent; color: var(--tea); }
+.btn svg { width: 18px; height: 18px; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Hero */
+.hero { padding-top: clamp(28px, 5vw, 56px); }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(24px, 5vw, 56px); align-items: center; }
+.hero-copy { display: grid; gap: 20px; min-width: 0; }
+.hero-copy h1 em { font-style: normal; color: var(--tea); }
+.rating-pill { display: inline-flex; align-items: center; gap: 10px; width: fit-content; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: 0.95rem; }
+.stars { display: inline-flex; gap: 2px; color: var(--marigold); }
+.stars svg { width: 16px; height: 16px; }
+.hero-photo { position: relative; min-width: 0; }
+.hero-photo img { width: 100%; border-radius: 22px; box-shadow: var(--shadow); }
+.hero-photo .badge { position: absolute; left: 14px; bottom: 14px; background: var(--surface); color: var(--ink); padding: 10px 14px; border-radius: 12px; box-shadow: var(--shadow); font-size: 0.9rem; max-width: calc(100% - 28px); }
+.hero-photo .badge b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; }
+@media (max-width: 820px) { .hero-grid { grid-template-columns: 1fr; } }
+
+/* Stay highlights */
+.stay { background: var(--surface); margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); border-block: 1px solid var(--line); }
+.amen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.amen { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 18px; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--line); align-items: start; }
+.amen .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--tea-soft); display: grid; place-items: center; color: var(--tea); }
+.amen .ico svg { width: 22px; height: 22px; }
+.amen h3 { font-family: var(--font-body); font-weight: 700; font-size: 1.02rem; margin-bottom: 2px; }
+.amen p { color: var(--muted); font-size: 0.95rem; }
+
+/* Lounge */
+.lounge-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: start; }
+.lounge-copy { display: grid; gap: 14px; align-content: start; }
+.photo-btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+.photo-btn img { width: 100%; transition: transform 0.4s; }
+.photo-btn:hover img { transform: scale(1.02); }
+.lounge-tint { background: var(--tint); margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+@media (max-width: 860px) { .lounge-grid { grid-template-columns: 1fr 1fr; } .lounge-copy { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .lounge-grid { grid-template-columns: 1fr; } }
+
+/* Rooms */
+.rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.room { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.room .photo-btn { border-radius: 0; box-shadow: none; aspect-ratio: 4 / 3; }
+.room .photo-btn img { height: 100%; object-fit: cover; }
+.room-body { padding: 18px; display: grid; gap: 8px; align-content: start; flex: 1; }
+.room-body p { color: var(--muted); font-size: 0.95rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.chip { font-size: 0.78rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--tea-soft); color: var(--tea); }
+.room .btn { margin-top: 8px; width: fit-content; padding: 9px 16px; font-size: 0.92rem; }
+
+/* Gallery */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.filter { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-weight: 500; cursor: pointer; }
+.filter[aria-pressed="true"] { background: var(--tea); border-color: var(--tea); color: var(--tea-ink); }
+.masonry { column-count: 3; column-gap: 16px; }
+.masonry .shot { break-inside: avoid; margin-bottom: 16px; position: relative; }
+.masonry .shot[hidden] { display: none; }
+.shot .photo-btn { border-radius: 14px; }
+.shot figcaption { position: absolute; left: 10px; bottom: 10px; right: 10px; padding: 6px 10px; border-radius: 8px; background: color-mix(in srgb, var(--surface) 88%, transparent); color: var(--ink); font-size: 0.82rem; font-weight: 600; width: fit-content; pointer-events: none; }
+.shot { margin-inline: 0; margin-top: 0; }
+@media (max-width: 860px) { .masonry { column-count: 2; } }
+@media (max-width: 420px) { .masonry { column-gap: 10px; } .masonry .shot { margin-bottom: 10px; } }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(14, 20, 17, 0.92); display: none; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.lightbox.open { display: flex; }
+.lightbox img { max-height: calc(100% - 80px); max-width: 100%; width: auto; object-fit: contain; border-radius: 10px; }
+.lb-cap { color: #EAF1ED; font-size: 0.95rem; text-align: center; max-width: 60ch; }
+.lb-btn { position: absolute; width: 46px; height: 46px; border-radius: 999px; border: 0; background: rgba(255, 255, 255, 0.16); color: #fff; cursor: pointer; display: grid; place-items: center; }
+.lb-btn:hover { background: rgba(255, 255, 255, 0.28); }
+.lb-btn svg { width: 22px; height: 22px; }
+.lb-close { top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); }
+.lb-prev { left: max(10px, env(safe-area-inset-left, 0px)); top: 50%; transform: translateY(-50%); }
+.lb-next { right: max(10px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); }
+
+/* Reviews */
+.reviews-top { display: grid; grid-template-columns: auto 1fr; gap: clamp(20px, 5vw, 48px); align-items: center; padding: 26px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); margin-bottom: 24px; }
+.score { text-align: center; }
+.score b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 4rem; line-height: 1; }
+.score .stars { justify-content: center; margin: 6px 0 4px; }
+.score span { color: var(--muted); font-size: 0.9rem; }
+.summary { display: grid; gap: 14px; min-width: 0; }
+.summary p { color: var(--muted); }
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { display: inline-flex; gap: 8px; align-items: center; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); font-size: 0.88rem; font-weight: 500; }
+.tag b { color: var(--tea); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .reviews-top { grid-template-columns: 1fr; } }
+.review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.review { margin: 0; padding: 22px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); display: grid; gap: 14px; align-content: start; min-width: 0; }
+.review blockquote { margin: 0; color: var(--ink); }
+.review footer { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--muted); }
+.avatar { width: 40px; height: 40px; border-radius: 999px; background: var(--tea-soft); color: var(--tea); display: grid; place-items: center; font-weight: 700; flex: none; }
+.review footer b { display: block; color: var(--ink); }
+.src-note { margin-top: 18px; color: var(--muted); font-size: 0.85rem; }
+
+/* Find us + contact */
+.find-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: clamp(20px, 3vw, 30px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.addr { font-style: normal; display: grid; gap: 2px; }
+.addr b { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; margin-bottom: 4px; }
+.phone-line { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.phone-line code { font-family: var(--font-body); font-size: 1.15rem; font-weight: 700; letter-spacing: 0.02em; user-select: all; }
+.copy-btn { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; font-size: 0.85rem; cursor: pointer; }
+.hint { color: var(--muted); font-size: 0.88rem; }
+@media (max-width: 760px) { .find-grid { grid-template-columns: 1fr; } }
+
+.contact-band { background: var(--tea); color: var(--tea-ink); margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.contact-band .eyebrow { color: var(--marigold); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(24px, 5vw, 56px); align-items: start; }
+.contact-copy { display: grid; gap: 16px; min-width: 0; }
+.contact-copy p { opacity: 0.92; }
+.contact-copy .phone-line code { color: var(--tea-ink); }
+.contact-copy .copy-btn { background: transparent; color: var(--tea-ink); border-color: color-mix(in srgb, var(--tea-ink) 45%, transparent); }
+.contact-copy a.plain { color: var(--tea-ink); }
+.form-card { background: var(--surface); color: var(--ink); border-radius: 20px; padding: clamp(20px, 3vw, 28px); display: grid; gap: 14px; min-width: 0; box-shadow: var(--shadow); }
+.form-card h3 { font-size: 1.4rem; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-weight: 600; font-size: 0.9rem; }
+.field input, .field select, .field textarea { width: 100%; padding: 11px 12px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; }
+.field textarea { min-height: 84px; resize: vertical; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 440px) { .two { grid-template-columns: 1fr; } }
+.err { color: var(--cushion); font-size: 0.88rem; min-height: 1.2em; }
+.result { display: none; gap: 12px; padding: 14px; border-radius: 12px; background: var(--tea-soft); color: var(--ink); }
+.result.show { display: grid; }
+.result pre { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: var(--font-body); font-size: 0.92rem; }
+@media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); padding-block: 34px calc(34px + 60px); margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.foot { max-width: var(--wrap); margin-inline: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.foot a { color: var(--ink); text-decoration: none; font-weight: 500; }
+.foot a:hover { text-decoration: underline; }
+.foot small { color: var(--muted); display: block; margin-top: 6px; max-width: 52ch; }
+
+/* Floating WhatsApp and cookie bar */
+.fab { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 55; display: inline-flex; align-items: center; gap: 8px; padding: 13px 18px; border-radius: 999px; background: #1F9D55; color: #fff; text-decoration: none; font-weight: 700; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22); transition: bottom 0.2s; }
+.fab svg { width: 22px; height: 22px; }
+.fab:hover { filter: brightness(1.06); }
+body.has-banner .fab { bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
+.cookie { position: fixed; left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 70; max-width: 560px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 16px 18px; display: none; gap: 12px; }
+.cookie.show { display: grid; }
+.cookie p { font-size: 0.92rem; color: var(--muted); }
+.cookie .btn { padding: 8px 16px; font-size: 0.92rem; }
+
+/* Policy pages */
+.policy { padding-block: clamp(32px, 6vw, 64px); max-width: 760px; margin-inline: auto; display: grid; gap: 22px; }
+.policy .back { width: fit-content; font-weight: 600; text-decoration: none; }
+.policy h2 { margin-top: 8px; }
+.policy h3 { font-family: var(--font-body); font-weight: 700; font-size: 1.1rem; margin-top: 10px; }
+.policy p, .policy li { color: var(--muted); }
+.policy ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.policy .updated { font-size: 0.88rem; color: var(--muted); }
+.policy-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.policy-tabs a { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; font-weight: 500; color: var(--ink); font-size: 0.92rem; }
+.policy-tabs a[aria-current="page"] { background: var(--tea); color: var(--tea-ink); border-color: var(--tea); }
+.table-scroll { overflow-x: auto; }
+table { border-collapse: collapse; min-width: 480px; width: 100%; font-size: 0.93rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--muted); }
+th { color: var(--ink); }
+</style>
+
+<header class="site-header">
+  <div class="nav">
+    <a class="brand" href="#top" data-home aria-label="Junu's Abode, home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--tea)"/><path d="M6 16.5 16 8l10 8.5" fill="none" stroke="var(--tea-ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 15v9h13v-9" fill="none" stroke="var(--tea-ink)" stroke-width="2.2" stroke-linejoin="round"/><circle cx="16" cy="19.5" r="2.2" fill="var(--marigold)"/></svg>
+      <span>Junu's Abode</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#stay">The stay</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#gallery">Photos</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#find">Find us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-tools">
+      <a class="btn btn-wa" href="#contact">Enquire</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<!-- HOME -->
+<main id="view-home">
+  <section class="hero" aria-labelledby="h-hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Homestay · Guwahati, Assam</p>
+        <h1 id="h-hero">A homely stay in <em>Guwahati</em>, looked after like family.</h1>
+        <p class="lede">Clean, comfortable rooms, a peaceful rooftop and hosts who remember your arrival time. Find us in Gopalthan, West Gotanagar.</p>
+        <div class="rating-pill" aria-label="Rated 4.5 out of 5 from 109 reviews">
+          <span class="stars" aria-hidden="true"></span>
+          <span>4.5 · 109 Google reviews</span>
+        </div>
+        <div class="btn-row">
+          <a class="btn" href="#contact">Plan your stay</a>
+          <a class="btn ghost" href="#gallery">See the photos</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <button class="photo-btn" type="button" data-open="img/IMG_0479.jpeg" aria-label="Open photo: mandala tapestry room">
+          <img src="img/IMG_0479.jpeg" width="1206" height="864" alt="Bedroom with a green and blue mandala tapestry, fairy lights and rust-patterned bedding" fetchpriority="high">
+        </button>
+        <div class="badge"><b>Rooftop &amp; rooms</b>Quiet corner of Guwahati</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stay" id="stay" aria-labelledby="h-stay">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">The stay</p>
+        <h2 id="h-stay">What guests keep mentioning</h2>
+        <p class="lede">Spotless rooms, a calm house and a host who answers quickly. Here is what you can expect.</p>
+      </div>
+      <div class="amen-grid">
+        <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M5 10V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/></svg></div><div><h3>Clean, cosy rooms</h3><p>Fresh white linen, folded towels and rooms kept spotless.</p></div></div>
+        <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12 12 4l9 8M5 10.5V20h14v-9.5"/><path d="M10 20v-5h4v5"/></svg></div><div><h3>Peaceful rooftop</h3><p>An open rooftop area to unwind in the evening.</p></div></div>
+        <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0"/></svg></div><div><h3>Caring hosts and staff</h3><p>Caretakers on hand, and early check-in can often be arranged. Ask when you enquire.</p></div></div>
+        <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h3>Lounge with TV</h3><p>A bright marble-floored sitting area with a wall-mounted TV and seating.</p></div></div>
+        <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12c0-4 3-6 7-6 0 4-2 7-7 7M12 12c0-3-2-5-6-5 0 3 2 6 6 6M12 12v9"/></svg></div><div><h3>Fans and air conditioning</h3><p>Ceiling fans in the rooms, with air conditioning in selected rooms.</p></div></div>
+        <div class="amen"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><h3>Homely atmosphere</h3><p>Warm lighting, fairy lights and small touches that feel like home.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lounge-tint" aria-labelledby="h-lounge">
+    <div class="wrap lounge-grid">
+      <div class="lounge-copy">
+        <p class="eyebrow">Living space</p>
+        <h2 id="h-lounge">A lounge that changes mood with the evening</h2>
+        <p class="lede">Daylight by day, soft violet light at night. Sit with a show on the wall-mounted TV, or share a coffee at the bar table.</p>
+        <div class="btn-row"><a class="btn ghost" href="#rooms">Choose a room</a></div>
+      </div>
+      <button class="photo-btn" type="button" data-open="img/IMG_0483.jpeg" aria-label="Open photo: lounge in daylight">
+        <img src="img/IMG_0483.jpeg" width="1206" height="1470" alt="Lounge with a mustard wooden sofa, white coffee table, bar table and glass door to the bedroom" loading="lazy">
+      </button>
+      <button class="photo-btn" type="button" data-open="img/IMG_0484.jpeg" aria-label="Open photo: lounge in violet light">
+        <img src="img/IMG_0484.jpeg" width="1206" height="1466" alt="Lounge lit in soft violet with a floor lamp, wall-mounted TV and marble floor" loading="lazy">
+      </button>
+    </div>
+  </section>
+
+  <section id="rooms" aria-labelledby="h-rooms">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Rooms</p>
+        <h2 id="h-rooms">Four bedrooms, each with its own feel</h2>
+        <p class="lede">Tap a photo to see it full size. Message us with your dates and we will confirm which room is free and the rate.</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room">
+          <button class="photo-btn" type="button" data-open="img/IMG_0482.jpeg" aria-label="Open photo: Palm Room"><img src="img/IMG_0482.jpeg" width="1206" height="1549" alt="Black iron bed with a yellow palm-print bedspread under a pleated pendant lamp" loading="lazy"></button>
+          <div class="room-body"><h3>Palm Room</h3><p>Black iron bed, yellow palm-print bedspread, a pleated pendant light and an arched niche with a shelf.</p><div class="chips"><span class="chip">Double bed</span><span class="chip">Air conditioning</span></div><a class="btn ghost" href="#contact" data-room="Palm Room">Ask about this room</a></div>
+        </article>
+        <article class="room">
+          <button class="photo-btn" type="button" data-open="img/IMG_0480.jpeg" aria-label="Open photo: Tassel Room"><img src="img/IMG_0480.jpeg" width="1206" height="867" alt="Large bed in white linen with a tassel garland and teal and gold curtains with fairy lights" loading="lazy"></button>
+          <div class="room-body"><h3>Tassel Room</h3><p>A roomy bed in crisp white linen, a wool tassel garland, teal and gold curtains with fairy lights and a wooden floor.</p><div class="chips"><span class="chip">Large bed</span><span class="chip">Natural light</span></div><a class="btn ghost" href="#contact" data-room="Tassel Room">Ask about this room</a></div>
+        </article>
+        <article class="room">
+          <button class="photo-btn" type="button" data-open="img/IMG_0481.jpeg" aria-label="Open photo: Globe Room"><img src="img/IMG_0481.jpeg" width="1206" height="1565" alt="Bedroom with a grey panelled wall, a world-map bedspread and a macramé pendant lamp" loading="lazy"></button>
+          <div class="room-body"><h3>Globe Room</h3><p>Grey panelled walls, a world-map bedspread, a macramé lamp and a wooden shelf with art for the traveller.</p><div class="chips"><span class="chip">Double bed</span><span class="chip">Ceiling fan</span></div><a class="btn ghost" href="#contact" data-room="Globe Room">Ask about this room</a></div>
+        </article>
+        <article class="room">
+          <button class="photo-btn" type="button" data-open="img/IMG_0479.jpeg" aria-label="Open photo: Mandala Room"><img src="img/IMG_0479.jpeg" width="1206" height="864" alt="Bed beneath a mandala tapestry framed with fairy lights" loading="lazy"></button>
+          <div class="room-body"><h3>Mandala Room</h3><p>A mandala tapestry wall lit with fairy lights, rust-print bedding and a bedside table with a little plant.</p><div class="chips"><span class="chip">Large bed</span><span class="chip">Fairy lights</span></div><a class="btn ghost" href="#contact" data-room="Mandala Room">Ask about this room</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" aria-labelledby="h-gallery" style="background:var(--surface);margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Photos</p>
+        <h2 id="h-gallery">See the place before you arrive</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filter photos">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-filter="lounge" aria-pressed="false">Lounge</button>
+        <button class="filter" type="button" data-filter="bedroom" aria-pressed="false">Bedrooms</button>
+      </div>
+      <div class="masonry" id="masonry">
+        <figure class="shot" data-group="lounge"><button class="photo-btn" type="button" data-gallery data-open="img/IMG_0484.jpeg" data-cap="Lounge in soft evening light"><img src="img/IMG_0484.jpeg" width="1206" height="1466" alt="Lounge lit in soft violet with a floor lamp, wall-mounted TV and marble floor" loading="lazy"></button><figcaption>Lounge at night</figcaption></figure>
+        <figure class="shot" data-group="bedroom"><button class="photo-btn" type="button" data-gallery data-open="img/IMG_0479.jpeg" data-cap="Mandala Room with fairy lights"><img src="img/IMG_0479.jpeg" width="1206" height="864" alt="Bed beneath a mandala tapestry framed with fairy lights" loading="lazy"></button><figcaption>Mandala Room</figcaption></figure>
+        <figure class="shot" data-group="bedroom"><button class="photo-btn" type="button" data-gallery data-open="img/IMG_0482.jpeg" data-cap="Palm Room with iron bed and pleated pendant"><img src="img/IMG_0482.jpeg" width="1206" height="1549" alt="Black iron bed with a yellow palm-print bedspread under a pleated pendant lamp" loading="lazy"></button><figcaption>Palm Room</figcaption></figure>
+        <figure class="shot" data-group="lounge"><button class="photo-btn" type="button" data-gallery data-open="img/IMG_0483.jpeg" data-cap="Lounge by day, with a view into the bedroom"><img src="img/IMG_0483.jpeg" width="1206" height="1470" alt="Lounge with a mustard wooden sofa, white coffee table, bar table and glass door to the bedroom" loading="lazy"></button><figcaption>Lounge by day</figcaption></figure>
+        <figure class="shot" data-group="bedroom"><button class="photo-btn" type="button" data-gallery data-open="img/IMG_0480.jpeg" data-cap="Tassel Room with teal and gold curtains"><img src="img/IMG_0480.jpeg" width="1206" height="867" alt="Large bed in white linen with a tassel garland and teal and gold curtains with fairy lights" loading="lazy"></button><figcaption>Tassel Room</figcaption></figure>
+        <figure class="shot" data-group="bedroom"><button class="photo-btn" type="button" data-gallery data-open="img/IMG_0481.jpeg" data-cap="Globe Room with grey panelled wall"><img src="img/IMG_0481.jpeg" width="1206" height="1565" alt="Bedroom with a grey panelled wall, a world-map bedspread and a macramé pendant lamp" loading="lazy"></button><figcaption>Globe Room</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" aria-labelledby="h-reviews">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Reviews</p>
+        <h2 id="h-reviews">What guests say</h2>
+      </div>
+      <div class="reviews-top">
+        <div class="score"><b>4.5</b><span class="stars" aria-hidden="true"></span><span>109 reviews</span></div>
+        <div class="summary">
+          <p>Guests describe clean, comfortable, well-equipped rooms and a peaceful rooftop. They praise the welcoming, caring and helpful hosts and staff, and the homely, relaxing feel of the place.</p>
+          <div class="tag-row" aria-label="Topics guests mention">
+            <span class="tag">Helpful host <b>13</b></span>
+            <span class="tag">Homely atmosphere <b>9</b></span>
+            <span class="tag">Cozy rooms <b>4</b></span>
+            <span class="tag">Spotless property <b>3</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="review-grid">
+        <figure class="review">
+          <span class="stars" aria-label="Guest review"></span>
+          <blockquote>My experience at Junu's abode was just amazing. The hosts were so sweet and understanding. I had an early check-in and they accommodated me very comfortably on the time I mentioned. The room was spotless, the caretakers (staff) were also very …</blockquote>
+          <footer><span class="avatar" aria-hidden="true">T</span><span><b>Tanvi Singhal</b>Google review · 2 months ago</span></footer>
+        </figure>
+        <figure class="review">
+          <span class="stars" aria-label="Guest review"></span>
+          <blockquote>Had a wonderful stay at Junu's Abode! The place is clean, comfortable, and very well maintained. The atmosphere is peaceful and homely, making it a great place to relax and unwind. The hosts were very welcoming, friendly, and helpful …</blockquote>
+          <footer><span class="avatar" aria-hidden="true">C</span><span><b>crack jack</b>Google review · 2 months ago</span></footer>
+        </figure>
+        <figure class="review">
+          <span class="stars" aria-label="Guest review"></span>
+          <blockquote>We had a wonderful stay at this beautiful homestay. The rooms were clean, comfortable, and well-equipped with all the necessary facilities. The hosts were extremely welcoming and caring, making us feel right at home.</blockquote>
+          <footer><span class="avatar" aria-hidden="true">D</span><span><b>Dharani Baraman</b>Google review · 2 months ago</span></footer>
+        </figure>
+      </div>
+      <p class="src-note">Rating, review count and topic summary are from the property's Google listing.</p>
+    </div>
+  </section>
+
+  <section id="find" aria-labelledby="h-find" style="background:var(--surface);margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Find us</p>
+        <h2 id="h-find">Gopalthan, West Gotanagar</h2>
+      </div>
+      <div class="find-grid">
+        <div class="card">
+          <address class="addr">
+            <b>Junu's Abode</b>
+            <span>West Gotanagar, Gopalthan</span>
+            <span>Ward No. 2, House No. 6</span>
+            <span>C/o Homoeoghar</span>
+            <span>Guwahati, Assam 781011</span>
+          </address>
+          <div class="btn-row">
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Junu%27s%20Abode%20West%20Gotanagar%20Gopalthan%20Guwahati%20781011" target="_blank" rel="noopener">Open in Google Maps</a>
+            <button class="copy-btn" type="button" data-copy="Junu's Abode, West Gotanagar, Gopalthan, Ward No. 2, House No. 6, C/o Homoeoghar, Guwahati, Assam 781011">Copy address</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Good to know</h3>
+          <p class="hint">Share your arrival time when you message us. Guests have said early check-in was arranged when asked ahead.</p>
+          <p class="hint">Ask the host for check-in and check-out times, the room rate and the booking steps for your dates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-band" id="contact" aria-labelledby="h-contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow">Contact</p>
+        <h2 id="h-contact">Message us on WhatsApp</h2>
+        <p>Tell us your dates and how many are travelling. We usually reply with room availability and rates.</p>
+        <div class="phone-line"><code id="phoneText">088120 63606</code><button class="copy-btn" type="button" data-copy="08812063606">Copy number</button></div>
+        <div class="btn-row">
+          <a class="btn" style="background:#1F9D55;border-color:#1F9D55;color:#fff" href="https://wa.me/918812063606?text=Hello%20Junu%27s%20Abode%2C%20I%27d%20like%20to%20enquire%20about%20a%20stay." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.2-.4.700-1.300.1-.1 0-.3 0-.4l-.8-1.900c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.200 5.300 5.300 0 0 0 1.100 2.800 12 12 0 0 0 4.600 4c1.700.7 2.400.8 3.200.7a2.700 2.700 0 0 0 1.800-1.300c.2-.5.2-.9.1-1.300-.1-.1-.3-.2-.5-.3z"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+        <p class="hint" style="color:inherit;opacity:.85">Phone, email and app links may not open from every viewer, so the number is shown as text you can copy.</p>
+      </div>
+
+      <form class="form-card" id="enquiry" novalidate>
+        <h3>Send an enquiry</h3>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g. Anita Das"></div>
+        <div class="two">
+          <div class="field"><label for="f-in">Check-in</label><input id="f-in" name="checkin" type="date"></div>
+          <div class="field"><label for="f-out">Check-out</label><input id="f-out" name="checkout" type="date"></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="f-guests">Guests</label>
+            <select id="f-guests" name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option></select></div>
+          <div class="field"><label for="f-room">Room</label>
+            <select id="f-room" name="room"><option>No preference</option><option>Palm Room</option><option>Tassel Room</option><option>Globe Room</option><option>Mandala Room</option></select></div>
+        </div>
+        <div class="field"><label for="f-note">Anything else?</label><textarea id="f-note" name="note" placeholder="Arrival time, early check-in, questions"></textarea></div>
+        <p class="err" id="formErr" role="alert"></p>
+        <button class="btn" type="submit">Prepare my message</button>
+        <div class="result" id="result" aria-live="polite">
+          <pre id="resultText"></pre>
+          <div class="btn-row">
+            <a class="btn" id="resultLink" style="background:#1F9D55;border-color:#1F9D55;color:#fff" href="#" target="_blank" rel="noopener">Open in WhatsApp</a>
+            <button class="copy-btn" type="button" id="copyMsg">Copy message</button>
+          </div>
+          <p class="hint">This page does not send anything by itself. You choose to send the message in WhatsApp.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- POLICY PAGES -->
+<main id="view-privacy" class="policy" hidden>
+  <a class="back" href="#top" data-home>← Back to Junu's Abode</a>
+  <nav class="policy-tabs" aria-label="Policies">
+    <a href="#privacy" aria-current="page">Privacy Policy</a><a href="#terms">Terms and Conditions</a><a href="#cookies">Cookie Policy</a>
+  </nav>
+  <h2>Privacy Policy</h2>
+  <p class="updated">Last updated: 9 November 2026</p>
+  <p>Junu's Abode ("we", "us") is a homestay at West Gotanagar, Gopalthan, Ward No. 2, House No. 6, C/o Homoeoghar, Guwahati, Assam 781011. This policy explains what personal information we collect from guests and website visitors, why, and the choices you have. We handle personal data in line with Indian law, including the Digital Personal Data Protection Act, 2023 and the Information Technology Act, 2000.</p>
+  <h3>What we collect</h3>
+  <ul>
+    <li><b>Enquiry details.</b> Your name, travel dates, number of guests, room preference and any note you write, when you message us on WhatsApp or by phone.</li>
+    <li><b>Contact details.</b> Your phone number, which WhatsApp shares with us when you message us.</li>
+    <li><b>Check-in details.</b> A valid photo ID and the names of guests, as Indian rules for accommodation providers require. Foreign nationals may also be asked for passport and visa details.</li>
+    <li><b>Website data.</b> This website does not use accounts, trackers or advertising. It stores only your theme choice and your cookie notice choice in your own browser.</li>
+  </ul>
+  <h3>How the enquiry form works</h3>
+  <p>The form on this site prepares a message on your device. Nothing is sent to our servers. The message is sent only if you choose to open WhatsApp and press send, and WhatsApp's own privacy terms then apply.</p>
+  <h3>Why we use your information</h3>
+  <ul>
+    <li>To reply to your enquiry and confirm availability and rates.</li>
+    <li>To manage your booking and your stay, including early check-in requests.</li>
+    <li>To meet legal duties, such as keeping guest records and responding to lawful requests from authorities.</li>
+    <li>To keep our guests and premises safe.</li>
+  </ul>
+  <h3>Sharing</h3>
+  <p>We do not sell your information. We share it only with staff who need it to host you, with service providers such as the messaging app you chose to contact us on, and with authorities when the law requires it.</p>
+  <h3>How long we keep it</h3>
+  <p>We keep enquiry messages only as long as needed to handle your booking. We keep guest registration records for the period the law requires, then delete them.</p>
+  <h3>Your rights</h3>
+  <p>You can ask us to tell you what personal information we hold about you, to correct it, or to delete it where the law allows. You can also withdraw consent for messages at any time. Contact us using the details below.</p>
+  <h3>Children</h3>
+  <p>We do not knowingly collect information about children except as part of a family booking made by a parent or guardian.</p>
+  <h3>Security</h3>
+  <p>We keep guest records with the host and staff only, and take reasonable steps to protect them. No method of storage or transmission is completely secure.</p>
+  <h3>Changes</h3>
+  <p>We may update this policy. The date at the top shows when it last changed.</p>
+  <h3>Contact</h3>
+  <p>Junu's Abode, West Gotanagar, Gopalthan, Ward No. 2, House No. 6, C/o Homoeoghar, Guwahati, Assam 781011. Phone and WhatsApp: 08812063606.</p>
+</main>
+
+<main id="view-terms" class="policy" hidden>
+  <a class="back" href="#top" data-home>← Back to Junu's Abode</a>
+  <nav class="policy-tabs" aria-label="Policies">
+    <a href="#privacy">Privacy Policy</a><a href="#terms" aria-current="page">Terms and Conditions</a><a href="#cookies">Cookie Policy</a>
+  </nav>
+  <h2>Terms and Conditions</h2>
+  <p class="updated">Last updated: 9 November 2026</p>
+  <p>These terms apply to your use of this website and to stays at Junu's Abode. By using the site or booking a stay you agree to them.</p>
+  <h3>1. Bookings</h3>
+  <ul>
+    <li>A booking is confirmed only when the host confirms it to you in writing, for example on WhatsApp, with the dates, room and rate.</li>
+    <li>The enquiry form on this website prepares a message only. Sending it does not reserve a room.</li>
+    <li>Rates, taxes and any advance payment are confirmed by the host at the time of booking.</li>
+  </ul>
+  <h3>2. Check-in and check-out</h3>
+  <ul>
+    <li>Check-in and check-out times are confirmed by the host when you book. Early check-in or late check-out depends on availability and may be arranged on request.</li>
+    <li>Every adult guest must show a valid government photo ID at check-in. Foreign nationals must show a passport and a valid visa.</li>
+    <li>We may refuse check-in if the required ID is not available.</li>
+  </ul>
+  <h3>3. Cancellations and changes</h3>
+  <p>Cancellation and refund terms are shared by the host when you book. Please tell us as early as you can if your plans change, and we will try to help.</p>
+  <h3>4. Guest conduct</h3>
+  <ul>
+    <li>Please respect neighbours and other guests, and keep noise low in the evening and at night.</li>
+    <li>Smoking, illegal substances and unregistered visitors are not allowed inside the rooms.</li>
+    <li>Guests are responsible for damage to rooms, furniture and fittings caused during their stay.</li>
+    <li>Please switch off lights, fans and air conditioning when you leave the room.</li>
+  </ul>
+  <h3>5. Rooftop and shared areas</h3>
+  <p>The rooftop and living areas are shared spaces. Use them with care and follow the host's guidance on timings and safety.</p>
+  <h3>6. Valuables and liability</h3>
+  <p>Please keep your valuables with you. We are not liable for loss of personal belongings, or for injury or loss that does not result from our negligence, to the extent the law allows.</p>
+  <h3>7. Website content</h3>
+  <p>Photos, text and design on this website belong to Junu's Abode or are used with permission. Room names, descriptions and amenities are given in good faith and may change. Ask the host to confirm details before you book.</p>
+  <h3>8. Reviews</h3>
+  <p>Ratings and reviews shown here come from the property's Google listing and reflect guests' own opinions.</p>
+  <h3>9. Governing law</h3>
+  <p>These terms are governed by the laws of India. Courts at Guwahati, Assam have jurisdiction over any dispute.</p>
+  <h3>10. Contact</h3>
+  <p>Junu's Abode, West Gotanagar, Gopalthan, Ward No. 2, House No. 6, C/o Homoeoghar, Guwahati, Assam 781011. Phone and WhatsApp: 08812063606.</p>
+</main>
+
+<main id="view-cookies" class="policy" hidden>
+  <a class="back" href="#top" data-home>← Back to Junu's Abode</a>
+  <nav class="policy-tabs" aria-label="Policies">
+    <a href="#privacy">Privacy Policy</a><a href="#terms">Terms and Conditions</a><a href="#cookies" aria-current="page">Cookie Policy</a>
+  </nav>
+  <h2>Cookie Policy</h2>
+  <p class="updated">Last updated: 9 November 2026</p>
+  <p>Cookies and similar browser storage are small pieces of data a website saves on your device. This page explains what this website saves.</p>
+  <h3>What we use</h3>
+  <p>This website uses only essential browser storage that remembers your own choices. It does not use advertising, analytics or tracking cookies, and it does not build a profile of you.</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Name</th><th>Purpose</th><th>Type</th><th>Kept for</th></tr></thead>
+      <tbody>
+        <tr><td>ja-theme</td><td>Remembers whether you chose the light or dark theme.</td><td>Browser storage, essential</td><td>Until you clear site data</td></tr>
+        <tr><td>ja-cookie-notice</td><td>Remembers that you have seen the cookie notice, so it does not show again.</td><td>Browser storage, essential</td><td>Until you clear site data</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Third parties</h3>
+  <p>This site loads fonts from Google Fonts. Google may receive your IP address and browser details when the fonts load. Links to Google Maps and WhatsApp open on those services' own sites, where their cookie and privacy terms apply.</p>
+  <h3>Your choices</h3>
+  <p>You can delete the stored items at any time by clearing site data in your browser settings. Most browsers also let you block or delete cookies. The site keeps working if you do, though it will forget your theme choice.</p>
+  <h3>Changes</h3>
+  <p>If we add analytics or other cookies in future, we will update this page and ask for your consent first.</p>
+  <h3>Contact</h3>
+  <p>Questions about this policy? Call or WhatsApp 08812063606.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="foot">
+    <div>
+      <a class="brand" href="#top" data-home><span>Junu's Abode</span></a>
+      <small>West Gotanagar, Gopalthan, Ward No. 2, House No. 6, C/o Homoeoghar, Guwahati, Assam 781011 · 08812063606</small>
+      <small>© 2026 Junu's Abode. This is a demo website.</small>
+    </div>
+    <nav aria-label="Legal">
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms and Conditions</a>
+      <a href="#cookies">Cookie Policy</a>
+    </nav>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="https://wa.me/918812063606?text=Hello%20Junu%27s%20Abode%2C%20I%27d%20like%20to%20enquire%20about%20a%20stay." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.2-.4.700-1.300.1-.1 0-.3 0-.4l-.8-1.900c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.200 5.300 5.300 0 0 0 1.100 2.800 12 12 0 0 0 4.600 4c1.700.7 2.400.8 3.200.7a2.700 2.700 0 0 0 1.800-1.300c.2-.5.2-.9.1-1.300-.1-.1-.3-.2-.5-.3z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<div class="cookie" id="cookieBar" role="region" aria-label="Cookie notice">
+  <p>This site only stores your theme and this choice in your browser. No tracking or ads. <a href="#cookies">Read the Cookie Policy</a>.</p>
+  <div class="btn-row"><button class="btn" type="button" id="cookieOk">Got it</button></div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <img id="lbImg" src="" alt="">
+  <p class="lb-cap" id="lbCap"></p>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+
+  /* Stars */
+  var starSvg = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.500 9.400l6.600-.8z"/></svg>';
+  var halfSvg = '<svg viewBox="0 0 24 24"><defs><linearGradient id="hg"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="currentColor" stop-opacity=".25"/></linearGradient></defs><path fill="url(#hg)" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.500 9.400l6.600-.8z"/></svg>';
+  $$('.stars').forEach(function (el) {
+    var full = el.closest('.reviews-top, .rating-pill') ? 4 : 5;
+    el.innerHTML = starSvg.repeat(full) + (full === 4 ? halfSvg : '');
+  });
+
+  /* Theme */
+  var root = document.documentElement;
+  var saved = store('ja-theme');
+  if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+  var themeBtn = $('#themeBtn');
+  var moon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+  var sun = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.900 4.900l1.400 1.400M17.700 17.700l1.400 1.400M2 12h2M20 12h2M4.900 19.100l1.400-1.400M17.700 6.300l1.400-1.400"/></svg>';
+  function isDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function paintThemeBtn() { themeBtn.innerHTML = isDark() ? sun : moon; }
+  themeBtn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next); store('ja-theme', next); paintThemeBtn();
+  });
+  paintThemeBtn();
+
+  /* Mobile menu */
+  var menuBtn = $('#menuBtn'), navLinks = $('#navLinks');
+  function closeMenu() { navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  menuBtn.addEventListener('click', function () {
+    var open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.addEventListener('click', function (e) { if (e.target.closest('a')) closeMenu(); });
+
+  /* Routing between home and policy pages */
+  var policies = { privacy: 'view-privacy', terms: 'view-terms', cookies: 'view-cookies' };
+  var home = $('#view-home');
+  function route() {
+    var h = (location.hash || '').replace('#', '');
+    var pid = policies[h];
+    home.hidden = !!pid;
+    Object.keys(policies).forEach(function (k) { $('#' + policies[k]).hidden = (k !== h); });
+    if (pid) {
+      document.title = { privacy: 'Privacy Policy', terms: 'Terms and Conditions', cookies: 'Cookie Policy' }[h] + " | Junu's Abode";
+      window.scrollTo(0, 0);
+    } else {
+      document.title = "Junu's Abode";
+      var target = h && h !== 'top' ? document.getElementById(h) : null;
+      if (target) target.scrollIntoView(); else if (h === 'top' || !h) window.scrollTo(0, 0);
+    }
+  }
+  window.addEventListener('hashchange', route);
+  $$('[data-home]').forEach(function (a) {
+    a.addEventListener('click', function () { if (location.hash === '#top') route(); });
+  });
+  route();
+
+  /* Gallery filter */
+  $$('.filter').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-filter');
+      $$('.filter').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      $$('#masonry .shot').forEach(function (s) { s.hidden = !(f === 'all' || s.getAttribute('data-group') === f); });
+    });
+  });
+
+  /* Lightbox */
+  var lb = $('#lightbox'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+  var photos = $$('[data-gallery]').map(function (b) {
+    return { src: b.getAttribute('data-open'), alt: $('img', b).alt, cap: b.getAttribute('data-cap') };
+  });
+  var idx = 0, lastFocus = null;
+  function show(i) {
+    idx = (i + photos.length) % photos.length;
+    lbImg.src = photos[idx].src; lbImg.alt = photos[idx].alt;
+    lbCap.textContent = photos[idx].cap + '  (' + (idx + 1) + ' of ' + photos.length + ')';
+  }
+  function openLb(src) {
+    var i = photos.findIndex(function (p) { return p.src === src; });
+    lastFocus = document.activeElement;
+    show(i < 0 ? 0 : i);
+    lb.classList.add('open'); document.body.style.overflow = 'hidden';
+    $('#lbClose').focus();
+  }
+  function closeLb() {
+    lb.classList.remove('open'); document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  $$('[data-open]').forEach(function (b) { b.addEventListener('click', function () { openLb(b.getAttribute('data-open')); }); });
+  $('#lbClose').addEventListener('click', closeLb);
+  $('#lbPrev').addEventListener('click', function () { show(idx - 1); });
+  $('#lbNext').addEventListener('click', function () { show(idx + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+  });
+  var tx = null;
+  lb.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (tx === null) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+  });
+
+  /* Copy buttons */
+  function copyText(text, btn) {
+    var label = btn.textContent;
+    function done(ok) { btn.textContent = ok ? 'Copied' : 'Select and copy'; setTimeout(function () { btn.textContent = label; }, 1600); }
+    try {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+    } catch (e) { done(false); }
+  }
+  $$('[data-copy]').forEach(function (b) { b.addEventListener('click', function () { copyText(b.getAttribute('data-copy'), b); }); });
+
+  /* Enquiry form to WhatsApp message */
+  var form = $('#enquiry'), err = $('#formErr'), result = $('#result');
+  var inEl = $('#f-in'), outEl = $('#f-out');
+  function iso(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  var today = new Date(); inEl.min = iso(today); outEl.min = iso(today);
+  inEl.addEventListener('change', function () { outEl.min = inEl.value || iso(today); });
+  function pretty(v) {
+    var p = v.split('-'); var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+  $$('[data-room]').forEach(function (a) {
+    a.addEventListener('click', function () { $('#f-room').value = a.getAttribute('data-room'); });
+  });
+  var currentMsg = '';
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = $('#f-name').value.trim(), cin = inEl.value, cout = outEl.value;
+    err.textContent = ''; result.classList.remove('show');
+    if (!name) { err.textContent = 'Please add your name.'; $('#f-name').focus(); return; }
+    if (!cin || !cout) { err.textContent = 'Please choose check-in and check-out dates.'; (cin ? outEl : inEl).focus(); return; }
+    if (cout <= cin) { err.textContent = 'Check-out must be after check-in.'; outEl.focus(); return; }
+    var nights = Math.round((new Date(cout) - new Date(cin)) / 86400000);
+    var room = $('#f-room').value, note = $('#f-note').value.trim();
+    var lines = [
+      "Hello Junu's Abode,",
+      "I'm " + name + ". I'd like to enquire about a stay.",
+      'Check-in: ' + pretty(cin),
+      'Check-out: ' + pretty(cout) + ' (' + nights + (nights === 1 ? ' night' : ' nights') + ')',
+      'Guests: ' + $('#f-guests').value,
+      'Room: ' + room
+    ];
+    if (note) lines.push('Note: ' + note);
+    lines.push('Please share availability and rates. Thank you!');
+    currentMsg = lines.join('\n');
+    $('#resultText').textContent = currentMsg;
+    $('#resultLink').href = 'https://wa.me/918812063606?text=' + encodeURIComponent(currentMsg);
+    result.classList.add('show');
+  });
+  $('#copyMsg').addEventListener('click', function () { copyText(currentMsg, $('#copyMsg')); });
+
+  /* Cookie notice */
+  var bar = $('#cookieBar');
+  if (store('ja-cookie-notice') !== '1') { bar.classList.add('show'); document.body.classList.add('has-banner'); }
+  function hideBar() { bar.classList.remove('show'); document.body.classList.remove('has-banner'); }
+  $('#cookieOk').addEventListener('click', function () { store('ja-cookie-notice', '1'); hideBar(); });
+})();
+</script>
+
+</body></html>
